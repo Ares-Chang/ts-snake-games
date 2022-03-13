@@ -88,7 +88,10 @@ module.exports = {
     new CleanWebpackPlugin(),
     // 按模板打包新建 dist
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      // 指定模板
+      template: './src/index.html',
+      // 配置 ico 图标
+      favicon: path.resolve(__dirname, 'src/assets/hero.ico')
     })
   ],
 
