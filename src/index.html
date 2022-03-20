@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snake Games</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Games</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="main">
+        <!-- S 蛇身体 -->
+        <div id="snake">
+          <div></div>
+        </div>
+        <!-- E 蛇身体 -->
+        <!-- S 食物 -->
+        <div id="food">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <!-- E 食物 -->
+      </div>
+      <!-- S 计分器 -->
+      <div class="footer">
+        <span>SCORE: <span id="score-panel">0</span></span>
+        <span>LEVEL: <span id="level-panel">1</span></span>
+      </div>
+      <!-- E 计分器 -->
+    </div>
+  </body>
 </html>

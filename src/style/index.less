@@ -1,3 +1,66 @@
+@bgc: #b7d4a9;
+
 body {
-  background-color: #bbfeab;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: @bgc;
+}
+
+#app {
+  height: calc(100vh - 20px);
+  border: 10px solid #000;
+  box-sizing: border-box;
+  border-radius: 60px;
+  background-color: @bgc;
+  padding: 26px;
+}
+
+#main {
+  height: 90%;
+  border: 6px solid #000;
+  position: relative;
+
+  // 公共属性，黑点
+  .darkSpot {
+    width: 20px;
+    height: 20px;
+    border: 1px solid @bgc;
+    position: absolute;
+    box-sizing: border-box
+  }
+
+  #snake {
+    & > div {
+      .darkSpot();
+      background-color: #000;
+    }
+  }
+
+  #food {
+    .darkSpot();
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    left: 40px;
+    top: 100px;
+    & > div {
+      width: 48%;
+      height: 48%;
+      background-color: #000;
+      border-radius: 50%;
+    }
+  }
+}
+
+.footer {
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 700;
+  padding: 40px 30px 10px;
+  box-sizing: border-box;
 }
