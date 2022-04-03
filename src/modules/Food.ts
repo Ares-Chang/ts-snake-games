@@ -6,11 +6,17 @@ export default class Food {
   /**
    * 存储食物元素
    */
-  element: HTMLElement
+  private element: HTMLElement
   /**
    * 存储场地信息
    */
   main: Site
+
+  /**
+   * 食物间距 及 蛇前进步符
+   */
+  step: number = 20
+
   constructor() {
     // 获取 food 元素并赋值给 element
     this.element = document.getElementById('food')! // ! 强调 food 元素一定会存在，不会为 null
@@ -43,13 +49,13 @@ export default class Food {
      */
     const left =
       Math.round(
-        Math.random() * Math.floor((this.main.ClientWidth - 20) / 20)
-      ) * 20
+        Math.random() * Math.floor((this.main.ClientWidth - 20) / this.step)
+      ) * this.step
 
     const top =
       Math.round(
-        Math.random() * Math.floor((this.main.ClientHeight - 20) / 20)
-      ) * 20
+        Math.random() * Math.floor((this.main.ClientHeight - 20) / this.step)
+      ) * this.step
 
     // 设置位置信息
     this.element.style.left = `${left}px`
