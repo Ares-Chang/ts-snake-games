@@ -10,12 +10,12 @@ export default class Food {
   /**
    * 存储场地信息
    */
-  main: Site
+  private main: Site
 
   /**
    * 食物间距 及 蛇前进步符
    */
-  step: number = 20
+  step: number = 30
 
   constructor() {
     // 获取 food 元素并赋值给 element

@@ -5,12 +5,12 @@ export default class ScorePanel {
   score = 0 // 记录分数
   level = 1 // 记录等级
 
-  maxLevel = 10 // 定义最高等级
-  upScore = 20 // 定义升级分数区间
+  private maxLevel = 10 // 定义最高等级
+  private upScore = 10 // 定义升级分数区间
 
   // 记录记分牌元素
-  scoreEle: HTMLElement
-  levelEle: HTMLElement
+  private scoreEle: HTMLElement
+  private levelEle: HTMLElement
 
   constructor() {
     this.scoreEle = document.querySelector('#score-panel')!
@@ -31,8 +31,19 @@ export default class ScorePanel {
   /**
    * 增加记分牌等级
    */
-  levelUp() {
+  private levelUp() {
     if (this.level >= this.maxLevel) return false
     this.levelEle.innerHTML = String(++this.level)
+  }
+
+  /**
+   * 游戏重新开始，
+   * 清空计分牌分数及等级
+   */
+  clearAll() {
+    this.score = 0
+    this.level = 1
+    this.scoreEle.innerHTML = '0'
+    this.levelEle.innerHTML = '1'
   }
 }

@@ -5,7 +5,7 @@ export default class Site {
   /**
    * 存储舞台场地信息
    */
-  element: HTMLElement
+  private element: HTMLElement
   constructor() {
     // 获取 main 元素
     this.element = document.getElementById('main')!

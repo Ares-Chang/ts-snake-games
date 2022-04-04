@@ -7,25 +7,25 @@ export default class Snake {
   /**
    * 存放蛇容器的 DOM
    */
-  element: HTMLElement
+  private element: HTMLElement
   /**
    * 存放蛇头
    */
-  head: HTMLElement
+  private head: HTMLElement
   /**
    * 存入场地信息
    */
-  site: Site
+  private site: Site
   /**
    * 存入食物信息
    */
-  food: Food
+  private food: Food
 
   /**
    * 存放蛇身体(包含蛇头)
    * HTMLCollection，会实时刷新
    */
-  bodys: HTMLCollection
+  private bodys: HTMLCollection
   constructor() {
     this.site = new Site()
     this.food = new Food()
@@ -86,7 +86,7 @@ export default class Snake {
    * @param {String} type 注明更改类型，X 轴还是 Y 轴
    * @param {Number} value 更改数值
    */
-  changePlace(type: string, value: number) {
+  private changePlace(type: string, value: number) {
     /**
      * 先移动身体，再移动头
      */
@@ -100,7 +100,14 @@ export default class Snake {
       this.head.style.top = `${value}px`
     }
 
-    if (this.isOver()) {
+    this.isOver() // 检查游戏是否结束
+  }
+
+  /**
+   * 判别是否死亡
+   */
+  private isOver(): void {
+    if (this.isToEdge()) {
       throw '您已撞墙，游戏结束！'
     } else if (this.isKill()) {
       throw '您已自杀，游戏结束！'
@@ -108,10 +115,10 @@ export default class Snake {
   }
 
   /**
-   * 判别是否死亡
+   * 检查是否运行至边缘外，是否撞墙
    * @returns {Boolean} 当前是否死亡
    */
-  isOver(): boolean {
+  private isToEdge(): boolean {
     if (this.X >= this.site.ClientWidth || this.X < 0) {
       return true
     } else if (this.Y >= this.site.ClientHeight || this.Y < 0) {
@@ -123,8 +130,9 @@ export default class Snake {
 
   /**
    * 检查是否撞向自己身体
+   * @returns {Boolean} 当前是否死亡
    */
-  isKill(): boolean {
+  private isKill(): boolean {
     const [head, ...bodyList] = [...this.bodys]
     return bodyList.some(item => {
       if (
@@ -135,6 +143,27 @@ export default class Snake {
       }
       return false
     })
+  }
+
+  /**
+   * 游戏重新开始，
+   * 清空蛇躯及位置信息，
+   */
+  reset() {
+    // 清空蛇躯
+    const [head, ...bodys] = this.bodys
+    bodys.map(item => this.element.removeChild(item))
+    /**
+     * 重置蛇头位置
+     * 死亡是有可能 X 出界，有可能 Y 出界
+     * 重置过程只能一个一个执行，所以通过 trycatch 防止程序出错中断执行
+     */
+    try {
+      this.X = 0
+    } catch (error) {}
+    try {
+      this.Y = 0
+    } catch (error) {}
   }
 
   /**
