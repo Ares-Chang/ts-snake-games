@@ -1,10 +1,11 @@
-# zexam
+# ts-snake-games
 
 > 项目名称：贪吃蛇游戏 Demo
 >
 > 项目简介：
 >
 > 本项目是为学习 TypeScript 所搭建的 Snake Demo
+> 可点击查看 [在线 Demo](https://ares-chang.github.io/ts-snake-games/)
 
 ## 开发环境
 
@@ -25,7 +26,7 @@
 ### 下载依赖
 
 ```
-yarn install
+yarn
 ```
 
 ### 运行项目
